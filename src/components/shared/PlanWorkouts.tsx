@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { usePlan } from "@/context/PlanContext";
@@ -56,20 +56,20 @@ const PlanWorkouts = () => {
 
   return (
     <section className="flex flex-col gap-6">
-      <div className="bg-[#13161D] border border-[#232732] p-6 pt-8.5 rounded-2xl grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div>
+      <div className="bg-[#13161D] border border-[#232732] p-6 pt-8.5 rounded-2xl grid grid-cols-1 gap-6">
+        <div className="flex flex-col items-center">
           <p className={`${inter.className} font-sans text-[#8A92A0] text-xs`}>
             Exercises
           </p>
           <p className="text-[#CCFF00] font-bold text-4xl">{totalWorkouts}</p>
         </div>
-        <div className="border border-[#232732] border-y-0 sm:border-l-2 sm:border-r-0 pl-0 sm:pl-8">
+        <div className="border border-[#232732] border-x-0 border-b-0 pt-4 flex flex-col items-center">
           <p className={`${inter.className} font-sans text-[#8A92A0] text-xs`}>
             Minutes
           </p>
           <p className="font-bold text-4xl">{totalDuration}</p>
         </div>
-        <div className="border border-[#232732] border-y-0 border-r-0 pl-0 sm:pl-8">
+        <div className="border border-[#232732] border-x-0 border-b-0 pt-4 flex flex-col items-center">
           <p className={`${inter.className} font-sans text-[#8A92A0] text-xs`}>
             Calories
           </p>
