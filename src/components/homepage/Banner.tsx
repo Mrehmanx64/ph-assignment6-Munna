@@ -11,22 +11,22 @@ const inter = Inter({
 
 const Banner = () => {
   return (
-    <div className="container mx-auto mt-32">
-      <section className="flex items-center justify-between p-14 rounded-xl border border-[#222630] bg-[#15171D]">
+    <div className="container mx-auto mt-32 px-4">
+      <section className="flex flex-col-reverse md:flex-row items-center justify-between p-6 md:p-14 rounded-xl border border-[#222630] bg-[#15171D] text-center md:text-left">
         {/* Left Content */}
-        <div className="space-y-5">
+        <div className="space-y-5 flex flex-col items-center md:items-start">
           <p
             className={`${inter.className} text-xs font-bold uppercase tracking-wider text-[#C2F800]`}
           >
             Workout Library
           </p>
 
-          <h1 className="max-w-125 text-6xl font-bold uppercase text-white sm:text-5xl">
+          <h1 className="max-w-125 text-4xl md:text-6xl font-bold uppercase text-white">
             Train with intent. Log every set.
           </h1>
 
           <p
-            className={`${inter.className} max-w-105 text-[16px] tracking-wider leading-relaxed text-[#9CA3AF] sm:text-xs`}
+            className={`${inter.className} max-w-105 text-sm md:text-[16px] tracking-wider leading-relaxed text-[#9CA3AF]`}
           >
             FitLog is a dark, no-nonsense gym companion: pick a lift, lock it
             into todays plan, and watch the weeks work add up.
@@ -41,7 +41,7 @@ const Banner = () => {
         </div>
 
         {/* Right Image */}
-        <div>
+        <div className="mb-8 md:mb-0">
           <Image src={BannerImage} alt="Banner" />
         </div>
       </section>

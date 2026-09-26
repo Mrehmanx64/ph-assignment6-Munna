@@ -41,8 +41,8 @@ const Books = () => {
   }
 
   return (
-    <div className="container mx-auto" id="library">
-      <div className="my-7 flex justify-between items-center">
+    <div className="container mx-auto px-4" id="library">
+      <div className="my-7 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
         <div>
           <h2 className="text-[30px] font-bold uppercase">The Library</h2>
           <p className={`${inter.className} text-[14px] text-[#9CA3AF]`}>
@@ -53,7 +53,7 @@ const Books = () => {
         <select 
           value={sortBy} 
           onChange={(e) => setSortBy(e.target.value)}
-          className="bg-[#13161D] border border-[#232732] text-white rounded-lg p-2"
+          className="bg-[#13161D] border border-[#232732] text-white rounded-lg p-2 w-full sm:w-auto"
         >
           <option value="duration">Duration</option>
           <option value="calories">Calories</option>
@@ -63,7 +63,7 @@ const Books = () => {
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {sortedBooks.map((book: IBook, ind: number) => {
-          return <BookCard key={ind} book={book} />;
+          return <div key={ind} className="mx-2 sm:mx-0"><BookCard book={book} /></div>;
         })}
       </div>
     </div>
