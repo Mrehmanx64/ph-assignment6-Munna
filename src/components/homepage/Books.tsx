@@ -14,11 +14,19 @@ const inter = Inter({
 const Books = () => {
   const [books, setBooks] = useState<IBook[]>([]);
   const [sortBy, setSortBy] = useState<string>("duration");
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     fetch("https://api.abcz.workers.dev/api/fitlog")
       .then((res) => res.json())
-      .then((data) => setBooks(data));
+      .then((data) => {
+        setBooks(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch books:", err);
+        setLoading(false);
+      });
   }, []);
 
   const sortedBooks = [...books].sort((a, b) => {
@@ -27,6 +35,10 @@ const Books = () => {
     if (sortBy === "rating") return b.rating - a.rating;
     return 0;
   });
+
+  if (loading) {
+    return <div className="container mx-auto text-center mt-10 text-white">Loading workouts...</div>;
+  }
 
   return (
     <div className="container mx-auto" id="library">
