@@ -146,7 +146,7 @@ const BookDetailsPage = async ({ params }: IBookDetailsPage) => {
           </ol>
         </div>
 
-        <div className={`${inter.className} text-sm font-semibold flex flex-col sm:flex-row gap-4 justify-center md:justify-start`}>
+        <div className={`${inter.className} text-sm font-semibold flex flex-col sm:flex-row gap-4 justify-center`}>
           <AddToPlanButton key={book.id} book={book} />
           <SaveForLaterButton book={book} />
         </div>

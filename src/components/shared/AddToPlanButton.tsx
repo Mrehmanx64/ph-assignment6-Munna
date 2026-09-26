@@ -28,7 +28,7 @@ const AddToPlanButton = ({
         toast.success("Added to today's plan");
       }}
       disabled={alreadyInPlan}
-      className={`rounded-lg px-4 py-2 text-xs font-bold uppercase transition ${
+      className={`rounded-lg px-4 py-3 min-h-12 text-xs font-bold uppercase transition ${
         alreadyInPlan
           ? "cursor-not-allowed bg-[#2B3038] text-[#8A92A0]"
           : "bg-[#C2F800] text-black hover:opacity-90 cursor-pointer"
