@@ -145,16 +145,21 @@ const PlanWorkouts = () => {
                     >
                       {book.equipment}
                     </p>
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClock, faFire, faStar } from "@fortawesome/free-solid-svg-icons";
+
+// ... (inside the map function, lines 148-158)
                     <p className={`${inter.className} text-xs text-[#CCFF00]`}>
-                      🕓{" "}
+                      <FontAwesomeIcon icon={faClock} className="mr-1" />
                       <span className="text-[#D1D5DB] mr-3">
                         {book.duration} min
                       </span>
-                      🔥{" "}
+                      <FontAwesomeIcon icon={faFire} className="mr-1" />
                       <span className="text-[#D1D5DB] mr-3">
                         {book.caloriesBurned} kcal
                       </span>
-                      ⭐ <span className="text-[#D1D5DB]">{book.rating}</span>
+                      <FontAwesomeIcon icon={faStar} className="mr-1" />
+                      <span className="text-[#D1D5DB]">{book.rating}</span>
                     </p>
                   </div>
                 </div>
