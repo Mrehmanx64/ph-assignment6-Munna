@@ -29,9 +29,18 @@ const PlanWorkouts = () => {
 
   const currentWorkouts = activeTab === "plan" ? plan : saved;
 
+  const [sortBy, setSortBy] = useState<string>("duration");
+
   const handleTabChange = (newTab: "plan" | "saved") => {
     router.push(`/my-plan?tab=${newTab}`);
   };
+
+  const sortedWorkouts = [...currentWorkouts].sort((a, b) => {
+    if (sortBy === "duration") return a.duration - b.duration;
+    if (sortBy === "calories") return a.caloriesBurned - b.caloriesBurned;
+    if (sortBy === "rating") return b.rating - a.rating;
+    return 0;
+  });
 
   const totalWorkouts = currentWorkouts.length;
 
@@ -158,15 +167,17 @@ const PlanWorkouts = () => {
                 >
                   <Link
                     href={`/book-details/${book.id}`}
-                    className="border border-[#374151] rounded-full px-4 py-2"
+                    className="border border-[#374151] rounded-full px-4 py-2 min-h-[40px] flex items-center"
                   >
                     View Details
                   </Link>
 
-                  <RemoveFromPlanButton
-                    bookId={book.id}
-                    showMarkAsDone={activeTab === "plan"}
-                  />
+                  <div className="min-h-[40px] flex items-center">
+                    <RemoveFromPlanButton
+                      bookId={book.id}
+                      showMarkAsDone={activeTab === "plan"}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
