@@ -56,20 +56,22 @@ const PlanWorkouts = () => {
 
   return (
     <section className="flex flex-col gap-6">
-      <div className="bg-[#13161D] border border-[#232732] p-6 pt-8.5 rounded-2xl grid grid-cols-1 gap-6">
+      <div className="bg-[#13161D] border border-[#232732] p-6 rounded-2xl flex justify-around items-center">
         <div className="flex flex-col items-center">
           <p className={`${inter.className} font-sans text-[#8A92A0] text-xs`}>
             Exercises
           </p>
           <p className="text-[#CCFF00] font-bold text-4xl">{totalWorkouts}</p>
         </div>
-        <div className="border border-[#232732] border-x-0 border-b-0 pt-4 flex flex-col items-center">
+        <div className="h-[60%] w-px bg-[#232732]"></div>
+        <div className="flex flex-col items-center">
           <p className={`${inter.className} font-sans text-[#8A92A0] text-xs`}>
             Minutes
           </p>
           <p className="font-bold text-4xl">{totalDuration}</p>
         </div>
-        <div className="border border-[#232732] border-x-0 border-b-0 pt-4 flex flex-col items-center">
+        <div className="h-[60%] w-px bg-[#232732]"></div>
+        <div className="flex flex-col items-center">
           <p className={`${inter.className} font-sans text-[#8A92A0] text-xs`}>
             Calories
           </p>
