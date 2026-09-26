@@ -8,6 +8,8 @@ import { IBook } from "@/types/bookstype";
 import { Inter } from "next/font/google";
 import Image from "next/image";
 import RemoveFromPlanButton from "./RemoveFromPlanButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClock, faFire, faStar } from "@fortawesome/free-solid-svg-icons";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -70,7 +72,6 @@ const PlanWorkouts = () => {
         <div
           className={`${inter.className} bg-[#151921] border border-[#232732] rounded-xl p-1 gap-1 text-xs`}
         >
-          {/* <button className="text-[#8A92A0] px-4 py-1.5">Todays Plan</button> */}
           <button
             onClick={() => handleTabChange("plan")}
             className={`px-4 py-1.5 rounded-lg cursor-pointer ${
@@ -81,9 +82,6 @@ const PlanWorkouts = () => {
           >
             Todays Plan
           </button>
-          {/* <button className="bg-[#1F242D] border border-[#2B303D] text-white rounded-lg px-4 py-1.5">
-            Saved
-          </button> */}
           <button
             onClick={() => handleTabChange("saved")}
             className={`px-4 py-1.5 rounded-lg cursor-pointer ${
@@ -110,9 +108,6 @@ const PlanWorkouts = () => {
 
           <p className={`${inter.className} text-xs text-[#A1A1AA]`}>
             Browse the library and add a lift to get today moving.
-            {/* {activeTab === "plan"
-              ? "Browse the library and add a lift to get today moving."
-              : "Save worouts that you want to try later."} */}
           </p>
 
           {activeTab === "plan" && (
@@ -128,7 +123,6 @@ const PlanWorkouts = () => {
         <div className="flex flex-col">
           {currentWorkouts.map((book: IBook) => (
             <div key={book.id}>
-              {/* <BookCard book={book} /> */}
               <div className="flex justify-between items-center p-4 bg-[#14171E] border border-[#232732] rounded-2xl">
                 <div className="flex gap-4">
                   <Image
@@ -145,10 +139,6 @@ const PlanWorkouts = () => {
                     >
                       {book.equipment}
                     </p>
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock, faFire, faStar } from "@fortawesome/free-solid-svg-icons";
-
-// ... (inside the map function, lines 148-158)
                     <p className={`${inter.className} text-xs text-[#CCFF00]`}>
                       <FontAwesomeIcon icon={faClock} className="mr-1" />
                       <span className="text-[#D1D5DB] mr-3">
