@@ -13,7 +13,7 @@ const inter = Inter({
 const Footer = () => {
   return (
     <footer className="bg-[#090A0D] mt-9 py-10 border border-x-0 border-b-0 border-t-[#1A1D24]">
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4 px-4 text-center md:text-left">
         <div>
           <Link href="/" className="btn btn-ghost text-xl">
             <Image src={Logo} alt="Logo" className="-rotate-45 mr-2" /> FITLOG
