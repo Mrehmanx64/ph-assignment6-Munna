@@ -4,6 +4,8 @@ import React from "react";
 import { toast } from "react-toastify";
 import { IBook } from "@/types/bookstype";
 import { usePlan } from "@/context/PlanContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faBookmark } from "@fortawesome/free-solid-svg-icons";
 
 interface ISaveForLaterButton {
   book: IBook;
@@ -34,8 +36,8 @@ const SaveForLaterButton = ({
       }`}
     >
       {alreadySaved
-        ? "Saved ✔"
-        : "🔰 Save for later"}
+        ? (<span><FontAwesomeIcon icon={faCheck} className="mr-2"/>Saved</span>)
+        : (<span><FontAwesomeIcon icon={faBookmark} className="mr-2"/>Save for later</span>)}
     </button>
   );
 };

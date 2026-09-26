@@ -3,6 +3,8 @@
 import { toast } from "react-toastify";
 import { IBook } from "@/types/bookstype";
 import { usePlan } from "@/context/PlanContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 interface IAddToPlanButton {
   book: IBook;
@@ -33,8 +35,8 @@ const AddToPlanButton = ({
       }`}
     >
       {alreadyInPlan
-        ? "Added to plan ✔"
-        : "💭 Add to todays plan"}
+        ? (<span><FontAwesomeIcon icon={faCheck} className="mr-2"/>Added to plan</span>)
+        : (<span><FontAwesomeIcon icon={faPlus} className="mr-2"/>Add to todays plan</span>)}
     </button>
   );
 };
