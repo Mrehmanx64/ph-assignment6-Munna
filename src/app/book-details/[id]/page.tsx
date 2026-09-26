@@ -33,16 +33,18 @@ const BookDetailsPage = async ({ params }: IBookDetailsPage) => {
   console.log(book, "book");
 
   return (
-    <div className="container mx-auto my-12 flex justify-between gap-22 mt-32">
-      <Image
-        src={book.image}
-        alt={book.name}
-        width={588}
-        height={735}
-        className="rounded-2xl h-full object-cover"
-      />
-      <div className="">
-        <h2 className="text-4xl font-bold mb-3 uppercase">{book.name}</h2>
+    <div className="container mx-auto my-12 flex flex-col md:flex-row justify-between gap-8 md:gap-22 mt-32 px-4">
+      <div className="w-full md:w-1/2">
+        <Image
+          src={book.image}
+          alt={book.name}
+          width={588}
+          height={735}
+          className="rounded-2xl w-full h-auto object-cover"
+        />
+      </div>
+      <div className="w-full md:w-1/2">
+        <h2 className="text-3xl md:text-4xl font-bold mb-3 uppercase">{book.name}</h2>
         <p className={`${inter.className} text-[16px] text-[#9CA3AF] mb-5`}>
           {book.description}
         </p>
