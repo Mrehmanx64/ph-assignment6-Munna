@@ -1,7 +1,8 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import { Inter } from "next/font/google";
 import { IBook } from "@/types/bookstype";
-// import Image from "next/image";
 import BookCard from "../shared/BookCard";
 
 const inter = Inter({
@@ -10,28 +11,46 @@ const inter = Inter({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
-const getBooks = async () => {
-  const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
-  const data = await res.json();
-  return data;
-};
+const Books = () => {
+  const [books, setBooks] = useState<IBook[]>([]);
+  const [sortBy, setSortBy] = useState<string>("duration");
 
-const Books = async () => {
-  const books = await getBooks();
+  useEffect(() => {
+    fetch("https://api.abcz.workers.dev/api/fitlog")
+      .then((res) => res.json())
+      .then((data) => setBooks(data));
+  }, []);
+
+  const sortedBooks = [...books].sort((a, b) => {
+    if (sortBy === "duration") return a.duration - b.duration;
+    if (sortBy === "calories") return a.caloriesBurned - b.caloriesBurned;
+    if (sortBy === "rating") return b.rating - a.rating;
+    return 0;
+  });
 
   return (
     <div className="container mx-auto" id="library">
-      <div className="my-7">
-        <h2 className="text-[30px] font-bold uppercase">The Library</h2>
-
-        <p className={`${inter.className} text-[14px] text-[#9CA3AF]`}>
-          Twelve lifts covering every major muscle group.
-        </p>
+      <div className="my-7 flex justify-between items-center">
+        <div>
+          <h2 className="text-[30px] font-bold uppercase">The Library</h2>
+          <p className={`${inter.className} text-[14px] text-[#9CA3AF]`}>
+            Twelve lifts covering every major muscle group.
+          </p>
+        </div>
+        
+        <select 
+          value={sortBy} 
+          onChange={(e) => setSortBy(e.target.value)}
+          className="bg-[#13161D] border border-[#232732] text-white rounded-lg p-2"
+        >
+          <option value="duration">Duration</option>
+          <option value="calories">Calories</option>
+          <option value="rating">Rating</option>
+        </select>
       </div>
 
-      {/* 3 Column Grid */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {books.map((book: IBook, ind: number) => {
+        {sortedBooks.map((book: IBook, ind: number) => {
           return <BookCard key={ind} book={book} />;
         })}
       </div>
