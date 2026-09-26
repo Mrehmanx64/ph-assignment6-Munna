@@ -105,8 +105,14 @@ const PlanWorkouts = () => {
 
         <div className={`${inter.className} gap-3 text-xs`}>
           <span className="text-[#8A92A0] px-4 py-1.5">Sort By</span>
-          <select className="bg-[#13161D] border border-[#232732] text-white rounded-lg w-23.5 h-8.5 appearance-none text-center">
-            <option value="">Duration 🔻</option>
+          <select 
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+            className="bg-[#13161D] border border-[#232732] text-white rounded-lg w-32 h-8.5 appearance-none text-center"
+          >
+            <option value="duration">Duration</option>
+            <option value="calories">Calories</option>
+            <option value="rating">Rating</option>
           </select>
         </div>
       </div>
@@ -130,8 +136,8 @@ const PlanWorkouts = () => {
         </div>
       ) : (
         <div className="flex flex-col">
-          {currentWorkouts.map((book: IBook) => (
-            <div key={book.id}>
+          {sortedWorkouts.map((book: IBook) => (
+            <div key={book.id} className="mb-4">
               <div className="flex flex-col md:flex-row justify-between items-center p-4 bg-[#14171E] border border-[#232732] rounded-2xl gap-4">
                 <div className="flex flex-col sm:flex-row gap-4 w-full">
                   <Image
@@ -167,17 +173,15 @@ const PlanWorkouts = () => {
                 >
                   <Link
                     href={`/book-details/${book.id}`}
-                    className="border border-[#374151] rounded-full px-4 py-2 min-h-[40px] flex items-center"
+                    className="border border-[#374151] rounded-full px-4 py-2"
                   >
                     View Details
                   </Link>
 
-                  <div className="min-h-[40px] flex items-center">
-                    <RemoveFromPlanButton
-                      bookId={book.id}
-                      showMarkAsDone={activeTab === "plan"}
-                    />
-                  </div>
+                  <RemoveFromPlanButton
+                    bookId={book.id}
+                    showMarkAsDone={activeTab === "plan"}
+                  />
                 </div>
               </div>
             </div>
