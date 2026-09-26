@@ -47,20 +47,20 @@ const PlanWorkouts = () => {
 
   return (
     <section className="flex flex-col gap-6">
-      <div className="bg-[#13161D] border border-[#232732] p-6 pt-8.5 rounded-2xl grid grid-cols-3">
+      <div className="bg-[#13161D] border border-[#232732] p-6 pt-8.5 rounded-2xl grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div>
           <p className={`${inter.className} font-sans text-[#8A92A0] text-xs`}>
             Exercises
           </p>
           <p className="text-[#CCFF00] font-bold text-4xl">{totalWorkouts}</p>
         </div>
-        <div className="border border-l-[#232732] border-y-0 border-r-0 pl-8">
+        <div className="border border-[#232732] border-y-0 sm:border-l-2 sm:border-r-0 pl-0 sm:pl-8">
           <p className={`${inter.className} font-sans text-[#8A92A0] text-xs`}>
             Minutes
           </p>
           <p className="font-bold text-4xl">{totalDuration}</p>
         </div>
-        <div className="border border-l-[#232732] border-y-0 border-r-0 pl-8">
+        <div className="border border-[#232732] border-y-0 border-r-0 pl-0 sm:pl-8">
           <p className={`${inter.className} font-sans text-[#8A92A0] text-xs`}>
             Calories
           </p>
@@ -123,14 +123,14 @@ const PlanWorkouts = () => {
         <div className="flex flex-col">
           {currentWorkouts.map((book: IBook) => (
             <div key={book.id}>
-              <div className="flex justify-between items-center p-4 bg-[#14171E] border border-[#232732] rounded-2xl">
-                <div className="flex gap-4">
+              <div className="flex flex-col md:flex-row justify-between items-center p-4 bg-[#14171E] border border-[#232732] rounded-2xl gap-4">
+                <div className="flex flex-col sm:flex-row gap-4 w-full">
                   <Image
                     src={book.image}
                     alt={book.name}
                     width={144}
                     height={80}
-                    className="h-20 object-cover rounded-xl"
+                    className="h-20 w-full sm:w-36 object-cover rounded-xl"
                   />
                   <div className="space-y-2">
                     <h2 className="font-bold text-[16px]">{book.name}</h2>
@@ -154,11 +154,11 @@ const PlanWorkouts = () => {
                   </div>
                 </div>
                 <div
-                  className={`${inter.className} text-xs flex gap-3 h-8.5 items-center`}
+                  className={`${inter.className} text-xs flex gap-3 h-8.5 items-center w-full md:w-auto justify-end`}
                 >
                   <Link
                     href={`/book-details/${book.id}`}
-                    className="border border-[#374151] rounded-full px-6 py-3"
+                    className="border border-[#374151] rounded-full px-4 py-2"
                   >
                     View Details
                   </Link>
