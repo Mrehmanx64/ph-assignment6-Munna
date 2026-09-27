@@ -1,7 +1,8 @@
-import { IBook } from "@/types/bookstype";
+import { notFound } from "next/navigation";
 import Image from "next/image";
 import React from "react";
 import { Inter } from "next/font/google";
+import { notFound } from "next/navigation";
 import AddToPlanButton from "@/components/shared/AddToPlanButton";
 import SaveForLaterButton from "@/components/shared/SaveForLaterButton";
 
@@ -18,9 +19,14 @@ interface IBookDetailsPage {
 }
 
 const getBooks = async () => {
-  const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
-  const data = await res.json();
-  return data;
+  try {
+    const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data;
+  } catch (e) {
+    return [];
+  }
 };
 
 const BookDetailsPage = async ({ params }: IBookDetailsPage) => {
@@ -30,7 +36,9 @@ const BookDetailsPage = async ({ params }: IBookDetailsPage) => {
     (book: IBook) => String(book.id) === String(id),
   ) as IBook;
 
-  console.log(book, "book");
+  if (!book) {
+    notFound();
+  }
 
   return (
     <div className="container mx-auto my-12 flex flex-col md:flex-row justify-between gap-8 md:gap-22 mt-32 px-4">
