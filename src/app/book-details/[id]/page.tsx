@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
+import { IBook } from "@/types/bookstype";
 import Image from "next/image";
 import React from "react";
 import { Inter } from "next/font/google";
-import { notFound } from "next/navigation";
 import AddToPlanButton from "@/components/shared/AddToPlanButton";
 import SaveForLaterButton from "@/components/shared/SaveForLaterButton";
 
